@@ -1,0 +1,12 @@
+{% extends "template.html" %}
+
+{% block content %}
+	{% for ch in posts %}
+		<br>
+		<h2><a href = "/profile/" style="text-decoration: none; color: black"> {{ ch.user }}</a></h2><h6>{{ ch.post_published }} {{ ch.post_time }}</h6><a href = "/post/?postid={{ch.post_id}}" style="text-decoration: none;">
+		<h3>{{ ch.post}}</h3><br>
+		<p>comment</p></a>		
+		<hr>
+	{% endfor %}
+
+{% endblock %}

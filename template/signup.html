@@ -1,0 +1,13 @@
+{% extends "template.html" %}
+
+{% block content %}
+
+
+<form method="POST">
+	{% csrf_token %}
+	{{form.as_p}}
+	<button class = "btn" type = "submit">Register</button>
+	</form>
+<hr>
+<p>If you already have an account<a href="/login/" style="text-decoration: none; color:blue"> click here </a>for login.</p>
+{% endblock %}

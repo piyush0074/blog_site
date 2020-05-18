@@ -1,0 +1,30 @@
+{% extends "template.html" %}
+
+{% block content %}
+	<div>
+		<br>
+		<h2><a href = "/profile/" style="text-decoration: none; color: black">{{ posts.user }}</a></h2>
+		<small>{{ posts.post_published }} {{ posts.post_time }}</small>
+		<div class='delete'>
+			{% if button %}
+				<p><a href="/delete/?postid={{posts.post_id}}">Delete</a></p>
+			{% endif %}
+		</div>
+		<h3>{{ posts.post}}</h3><br>
+
+	</div>
+	<div id="like-section">
+		{% include 'like_section.html' %}
+	</div>{{comment}}
+	<form method="POST" action ="/post/?postid={{posts.post_id}}">{% csrf_token %}
+		{{form.as_p}}
+   		<button type="submit" >comment</button>
+	</form>
+	<br>
+		{% for ch in cmt %}
+			<br><h3><a href = "/profile/" style="text-decoration: none; color: black">{{ ch.user }}</a></h3>
+			<small>{{ ch.comment_date }} {{ ch.comment_time }}</small>
+			<h2>{{ ch.comment }}</h2><hr>
+		{% endfor %}
+	</div>
+{% endblock %}

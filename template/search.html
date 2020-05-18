@@ -1,0 +1,48 @@
+{% load static %}
+<html>
+<head>
+<link rel = "stylesheet" href = "{% static 'css/style.css' %}">
+</head>
+<body>
+	<div class = "header">
+		</div>
+		{% include "includes/navbar.html" %}
+	<div class = "set">
+	{% block content %}
+	{% if submitbutton == 'Search' and request.GET.q != '' %}
+		{% if results %}
+			{% for ch in results %}
+				<h2><a href = "/profile" style="text-decoration: none; color: black">{{ch}}</a></h2>
+			{% endfor %}
+		{% else %}
+			<h2>Sorry, no result found.</h2>
+		{% endif %}
+	{% endif %}
+	<!--{% if submitbutton == 'Search' and request.GET.q != '' %}
+{% if results %}
+<h1>Results for <b>{{ request.GET.q }}</b></h1>
+<br/><br/>
+
+{% for result in results %}
+
+{{result.title}}
+<br/>
+
+{{result.content}}
+<br/>
+
+{% endfor %}
+{% else %}
+No search results for this query
+{% endif %}
+{% endif %}-->
+
+	{% endblock %}
+		</div>
+	<div class = "footer">
+		<p algin = "center">Created by Piyush0074</p>
+		</div>
+		
+</body>
+
+</html>

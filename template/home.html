@@ -1,0 +1,40 @@
+{% extends "template.html" %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<h2>Welcome {{ user }} this is your home page.</h2>
+
+<div class="post">
+	<form method="POST" action ="/home/">
+		{% csrf_token %}
+		{{form.as_p}}
+   		<button type="submit">Post</button>
+	</form>
+</div><br>
+	
+	<br>
+	<div class = "posts">
+	{% for ch in posts reversed %}
+		<br>
+		<h2><a href = "/profile/" style="text-decoration: none; color: black">{{ ch.user }}</a></h2>
+		<small>{{ ch.post_published }} {{ ch.post_time }}</small><a href = "/post/?postid={{ch.post_id}}" style="text-decoration: none;">
+		<h3>{{ ch.post}}</h3><br>
+	<!--{% for count in cmt %}
+		{% if count.post_id == ch.post_id %}
+			{% with c="c+1" %}
+			{% endwith %}
+		{% endif %}
+	{% endfor %}
+	{% with total=cmt.count %}
+		<p>c{{ total }}c comment</p></a>	
+		
+		{% endwith %}-->		
+		<hr>
+	{% endfor %}
+	</div>
+<br>
+{% else %}
+<h2>Invalid Request</h2>
+<h2>You have to<a href = "/login/" style="text-decoration: none; color:blue" > login </a>first.</h2>
+{% endif %}
+{% endblock %}

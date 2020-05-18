@@ -1,0 +1,16 @@
+{% extends "template.html" %}
+
+{% block content %}
+
+
+<form method="POST">
+	{% csrf_token %}
+	{{form.as_p}}
+	<button class = "btn" type = "submit">Log in</button>
+	</form>
+<br><br>
+
+<hr>
+	<p>If you are new user, please <a href = "/signup" style="text-decoration: none; color: blue"> click here</a> for sign up.</p>
+{%  endblock%}
+

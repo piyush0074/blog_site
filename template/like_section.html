@@ -1,0 +1,9 @@
+<form method="POST" action="{% url 'like' %}">
+	{% csrf_token %}
+	{{like_count}}<button type="submit" id="like" name="buttonfordislike" value="{{posts.post_id}}">Like</button>
+</form>
+
+<form method="POST" action="{% url 'dislike' %}">
+	{% csrf_token %}
+	{{dislike_count}}<button type="submit" id="dislike" name="buttonfordislike" value="{{posts.post_id}}">DisLike</button>
+</form>

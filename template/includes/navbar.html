@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class = "topnav">
+		{% if user.is_authenticated %}
+			<a href="/home">Home</a>
+			<div class="search-container">
+				<form action="/search/" method="GET" value="{{request.GET.q}}" >
+					
+		      			<input type="text" placeholder="Search.." name="q" value="{{request.GET.q}}">
+      					<button type="submit">Submit</button>
+    				</form>
+				
+
+			</div>
+			<a href="{% url 'profile' %}">{{user.username|title}}</a>
+			<!--<div class = "dropdown">
+				<button class  = "dropbtn">Me
+					<i class = "fa fa-caret-down"></i>
+				</button>
+				<div class = "dropdown-content">
+					<a href="#">Setting</a>
+					<a href="/logout">Log Out</a>
+				</div>
+			</div>-->
+			<a href="#">Setting</a>
+			<a href="/logout">Log Out</a>
+		{% else %}
+			<a href="/login">Log in</a>
+		{% endif %}
+</div>
